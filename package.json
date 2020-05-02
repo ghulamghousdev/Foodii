@@ -1,0 +1,26 @@
+{
+  "name": "forkify",
+  "version": "1.0.0",
+  "description": "forkify project",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack --mode development",
+    "build": "webpack --mode production",
+    "start": "webpack-dev-server --mode development --open"
+  },
+  "author": "Ghulam Ghous",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.9.6",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.1.0",
+    "babel-preset-env": "^1.7.0",
+    "html-webpack-plugin": "^4.3.0",
+    "webpack": "^4.43.0",
+    "webpack-dev-server": "^3.10.3"
+  },
+  "dependencies": {
+    "babel-polyfill": "^6.26.0",
+    "webpack-cli": "^3.3.11"
+  }
+}
