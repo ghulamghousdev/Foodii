@@ -1,3 +1,7 @@
 node_modules
 .cache
 debug.log
+dist/.DS_Store
+src/.DS_Store
+dist/index.html
+dist/js/bundle.js
