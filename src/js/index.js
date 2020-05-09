@@ -171,3 +171,40 @@ elements.shopping.addEventListener('click', e => {
     }
 });
 
+//Like Controller
+const likeController = () => {
+    if(!state.likes){
+        state.likes = new Likes();
+    }
+    const currentID = state.recipe.id;
+
+    //User has not yet liked the recipe
+    if(!state.likes.isLiked(currentID)){
+
+        //add like to state
+        const newLike = state.likes.addLike(
+            currentID,
+            state.recipe.title,
+            state.recipe.author,
+            state.recipe.img
+        );
+
+        //toggle the like button
+
+
+        //Add like to UI
+        console.log(state.likes);
+
+    }
+    else{
+        //Remove like from the state
+        state.likes.deleteLike(currentID);
+
+        //toggle the like button
+
+
+        //Remove like from UI list
+        console.log(state.likes);
+
+    }
+}
