@@ -12,7 +12,6 @@ export const toggleLikeMenu = numLikes => {
 };
 
 export const renderLike = like => {
-    console.log(like);
     const markup = `
         <li>
             <a class="likes__link" href="#${like.id}">
