@@ -68,7 +68,7 @@ export const renderRecipe = (recipe, isLiked) => {
             <ul class="recipe__ingredient-list">
                 ${recipe.ingredients.map(el => createIngredient(el)).join('')}
             </ul>
-            <button class="btn-small recipe__btn recipe__btn--add">
+            <button class="btn-small recipe__btn recipe__btn--add ">
                 <svg class="search__icon">
                     <use href="img/icons.svg#icon-shopping-cart"></use>
                 </svg>
@@ -95,7 +95,6 @@ export const renderRecipe = (recipe, isLiked) => {
 export const updateServingsIngredients = recipe => {
     // Update servings
     document.querySelector('.recipe__info-data--people').textContent = recipe.servings;
-
     // Update ingredeints
     const countElements = Array.from(document.querySelectorAll('.recipe__count'));
     countElements.forEach((el, i) => {
