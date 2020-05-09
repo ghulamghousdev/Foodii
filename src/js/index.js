@@ -1,9 +1,12 @@
 import Search from './models/Search';
 import * as searchView from './views/searchView';
 import * as recipeView from './views/recipeView';
+import * as listView from './views/listView';
 import { elements, renderLoader, clearLoader} from './views/base';
 import Recipe from './models/Recipe';
 import List from './models/List';
+import Likes from './models/Likes';
+
 
 /*Global State of the app which contains 
 * Search Object
@@ -16,6 +19,7 @@ import List from './models/List';
 **Search Controller
 */
 const state = {};
+window.state = state;
 let res;
 
 //Function to control search
@@ -111,6 +115,19 @@ const controlRecipe = async () => {
 window.addEventListener('hashchange', controlRecipe);
 window.addEventListener('load', controlRecipe);
 
+const listController = () => {
+    //create a new list if there is none
+    if(!state.list){
+        state.list = new List();
+    }
+
+    //Add ingredient to List and UI
+    state.recipe.ingredients.forEach(element => {
+        const item = state.list.addItem(element.count, element.unit, element.ingredient);
+        listView.renderItem(item);
+    });
+}
+
 //handling recipe button clicks
 elements.recipe.addEventListener('click', event => {
     if ( event.target.matches('.btn-decrease, .btn-decrease *')){
@@ -123,7 +140,34 @@ elements.recipe.addEventListener('click', event => {
         state.recipe.updateServings('inc');
         recipeView.updateServingsIngredients(state.recipe);
     }
-    console.log(state.recipe);
+    else if (event.target.matches('.recipe__btn--add, .recipe__btn--add *'))
+    {
+        //List Controller
+        listController();
+    }
+    else if (event.target.matches('.recipe__love, .recipe__love *')){
+        //Like Controller
+        likeController();
+    }
+    
 })
 
-window.l = new List();
+// Handle delete and update list item events
+elements.shopping.addEventListener('click', e => {
+    const id = e.target.closest('.shopping__item').dataset.itemid;
+
+    // Handle the delete button
+    if (e.target.matches('.shopping__delete, .shopping__delete *')) {
+        // Delete from state
+        state.list.deleteItem(id);
+
+        // Delete from UI
+        listView.deleteItem(id);
+
+    // Handle the count update
+    } else if (e.target.matches('.shopping__count-value')) {
+        const val = parseFloat(e.target.value, 10);
+        state.list.updateCount(id, val);
+    }
+});
+
