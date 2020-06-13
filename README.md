@@ -1,5 +1,5 @@
 
-# Recipe App
+# Recipe Search Engine
 
 This is a web application for beginner cooks and kitchen hobbyists to search and save their favorite recipes. 
 
@@ -22,7 +22,7 @@ npm install npm@latest -g
 1. Clone the repo
 
 ```
-git clone https://github.com/ghulamghousdev/recipeapp.git
+git clone https://github.com/ghulamghousdev/Recipe-Search-Engine.git
 ```
 
 2. Run npm install inside project root
