@@ -1,5 +1,5 @@
 
-# [Foodii](https://foodii.netlify.app/) -> A Recipe Search Engine
+# Foodii -> A Recipe Search Engine
 
 [Foodii.com](https://foodii.netlify.app/)
 
